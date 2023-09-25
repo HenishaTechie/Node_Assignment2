@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style type="text/css">
+
+    form
+    {
+        width: 50%;
+        margin: 10px 25%;
+    }
+      </style>
+</head>
+
+<body>
+    <div class="container">	
+        <div class="links">
+            <a href="/logout">Log Out</a>
+        </div>	
+
+        <div class="links">
+            <a href="/student/">Go Back</a>
+        </div>
+		<div class="text">
+			<h1 class="text-center my-4">Update Student</h1>
+			<hr class="w-25 m-auto bg-dark">
+		</div>
+
+        <div class="err">
+            <% if(typeof errors!=='undefined' ){ %>
+                <p>
+                    <%= errors.validationError %>
+                </p>
+                <% } %>
+        </div>
+
+        <form class="flex-center" action="/student/edit/<%= data?._id %>" method="post">
+            <input type="hidden" name="_id" value="<%= data?._id %>">
+            <div class="form-group">
+                <label for="name">Student Name</label>
+                <input type="text"  class="form-control" placeholder="Enter Student name" name="name" value="<%= data?.name %>" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Password</label>
+                <input type="password"  class="form-control" name="password" placeholder="Enter Password" id="" value="<%= data?.password %>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="name">email</label>
+                <input type="email"  class="form-control" name="email" placeholder="Enter email" id="" value="<%= data?.email %>" required>
+            </div>
+            <div class="form-group">
+                <label for="name">city</label>
+                <input type="text"  class="form-control" name="city" placeholder="Enter city" id="" value="<%= data?.city %>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Age</label>
+                <input type="text"  class="form-control"  name="age" id="" min="10" max="80" placeholder="Enter Age"  value="<%= data?.age %>" id="" required>
+            </div>
+
+            <label for="name">Gender</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" value="Male" id="" <% if(data?.gender==='Male' ) {%>checked<%} %> checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Male
+                </label>
+              </div>
+
+           
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" value="Female" id="" <% if(data?.gender==='Female' ){%>
+                    checked<% }%>>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Female
+                </label>
+              </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary">
+            </div>
+        </form>
+	</div>
+</div>
+</html>
